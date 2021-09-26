@@ -6,7 +6,7 @@ export class UserRouter{
 
     constructor(){
 
-        this.router = Router()
+        this.router = Router({mergeParams: true})
 
         this.getRoutes()
 
@@ -18,12 +18,31 @@ export class UserRouter{
 
     }
     getRoutes(){
-        this.router.get('/createSurvey',)
+        this.router.get('/createSurvey',UserController.createSurvey)
+
+        this.router.get('/getCandidateBySurveyLink', UserController.getCandidateBySurveyLink)
+
+        this.router.get('/getAllTraits',UserController.getAllTraits)
+
+        this.router.get('/getAllCandidates', UserController.getAllCandidates)
+
+        this.router.get('/getSurveyData', UserController.getSurveyData)
+
+        this.router.get('/getSurveyReport', UserController.getSurveyReport)
+
+        this.router.get('/getAvgRatings', UserController.getAvgRatings)
+
+        this.router.get('/test', UserController.test)
     }
 
     postRoutes(){
         this.router.post('/createCandidates', UserController.createCandidates)
+
         this.router.post('/createTraits', UserController.createTraits)
+
+        this.router.post('/findOrCreateRespondent', UserController.findOrCreateRespondent)
+
+        this.router.post('/submitSurvey', UserController.submitSurvey)
     }
 
     patchRoutes(){

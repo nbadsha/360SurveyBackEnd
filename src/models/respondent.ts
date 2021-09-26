@@ -4,7 +4,8 @@ const sequelize = require('../SQLITE3DB/database')
 const Respondent = sequelize.define('respondent',{
     emp_id:{
         type: DataTypes.NUMBER,
-        allowNull:false
+        allowNull:false,
+        unique:true
     },
 
     emp_name:{
@@ -15,7 +16,7 @@ const Respondent = sequelize.define('respondent',{
     department:{
         type:DataTypes.STRING,
         allowNull:false
-    }
+    },
 })
 
 module.exports = Respondent

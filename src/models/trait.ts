@@ -7,7 +7,7 @@ const Trait = sequelize.define('trait',{
     trait_name:{
         type:DataTypes.STRING,
         allowNull:false,
-        unique:true
+        unique:false
     },
     trait_definition:{
         type:DataTypes.TEXT,

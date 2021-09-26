@@ -1,6 +1,6 @@
-import bodyParser = require('body-parser')
 import * as express from 'express'
 import UserRouter from './routers/UserRouter'
+const cors = require('cors')
 const sequelize = require('./SQLITE3DB/database')
 
 export class Server{
@@ -26,9 +26,6 @@ export class Server{
     }
 
     connectSQLITE3(){
-        // const sequelize = new Sqlite3Database()
-        
-        // console.log(sequlize.createDB())
         // sync({force:true})
         //use above code to restructure the DB. Remeber all data will be flashed
         sequelize.sync().then(()=>{
@@ -37,8 +34,8 @@ export class Server{
     }
 
     configureBodyParser(){
-        
-        // this.app.use(bodyParser.urlencoded({extended:true}))
+        this.app.use(cors())
+        // this.app.use(express.urlencoded({extended:true}))
         this.app.use(express.json())
     }
 
