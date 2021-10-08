@@ -25,6 +25,7 @@ export class FetchData{
     static getSurveyData(){
         let query =
                 `SELECT 
+                        surveys.id as survey_id,
                         candidates.cand_name,
                         candidates.job_role,
                         COUNT(survey_records.surveyId) AS responses,
@@ -68,7 +69,7 @@ export class FetchData{
                     ratings.candidateId,
                     candidates.cand_name,
                     traits.trait_name,
-                    avg(ratings.trait_rating) AS average_rating
+                    ROUND(avg(ratings.trait_rating),2) AS average_rating
 
             FROM ratings
 
@@ -87,14 +88,8 @@ export class FetchData{
         return new Promise((res,rej)=>{
             res(sequelize.query(query))
         })
-    }
+    }    
 
 
-
-    
-
-    static isEligibleForSurvey(survey_id,emp_id){
-
-    }
 
 }

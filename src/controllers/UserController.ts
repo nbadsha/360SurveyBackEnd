@@ -95,8 +95,12 @@ export class UserController{
         })
     }
 
-    static isEligibleForSurvey(){
-
+    static isEligibleForSurvey(req,res){
+        SurveyRecord.count({where:{surveyId:req.query.survey_id,respondentId:req.query.respondent_id}})
+        .then((result)=>{
+            res.send({count:result})
+            console.log(result)
+        })
     }
 
     static async getCandidateBySurveyLink(req,res){
@@ -124,6 +128,16 @@ export class UserController{
         .then(function(emp,created){
             res.send(emp)            
         })       
+    }
+
+    static getRespondentByEmpId(req,res){
+        
+        Respondent.findAll({where:{emp_id:req.query.emp_id}})
+        .then((result)=>{
+            res.send(result)
+        }).catch((error)=>{
+            res.send(error)
+        })
     }
 
     static async submitSurvey(req,res){

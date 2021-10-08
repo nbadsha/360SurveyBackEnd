@@ -32,6 +32,10 @@ export class UserRouter{
 
         this.router.get('/getAvgRatings', UserController.getAvgRatings)
 
+        this.router.get('/getRespondentByEmpId',UserController.getRespondentByEmpId)
+
+        this.router.get('/isEligibleForSurvey',UserController.isEligibleForSurvey)
+
         this.router.get('/test', UserController.test)
     }
 

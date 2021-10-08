@@ -33,10 +33,11 @@ export class Helpers {
   static transPoseSurveyReport(result){
     const uSurvey:Array<any> = _.uniqBy(result,'surveyRecordId')
     let newData = []
-    uSurvey.map((ue)=>{      
+    uSurvey.map((ue,i)=>{      
         let uSurveyId = ue.surveyRecordId
         let newSurveyData =
         {
+          srno:i+1,
           surveyRecordId: uSurveyId,
           cand_id: ue.cand_id,
           candidate: ue.candidate,
@@ -62,12 +63,12 @@ export class Helpers {
 
   static transPoseAvgSurveyReport(result){
     const uSurvey:Array<any> = _.uniqBy(result,'candidateId')
-    let newData = []
-    let traitNames = []
-    uSurvey.map((ue)=>{      
+    let newData = []    
+    uSurvey.map((ue,i)=>{      
         let uCandId = ue.candidateId
         let newSurveyData =
         {
+          srno:i+1,
           candidateId: uCandId,
           cand_name: ue.cand_name,
           // trait_ratings:[]
